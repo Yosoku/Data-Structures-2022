@@ -7,6 +7,9 @@ namespace ds {
 template <typename T>
 class OrderedArray : public Array<T> {
  public:
+  // Inserts element while keeping ascending order. Shifts all the elements
+  // right. If needed this method will call Resize() to reallocate more memory
+  // for the buffer. Runs in O(n)
   void Add(const T& element) override {
     printf("normal add\n");
     if (this->size_ >= this->capacity_)  // array full
@@ -19,7 +22,6 @@ class OrderedArray : public Array<T> {
   }
 
   void Add(T&& element) override {
-    printf("Move add\n");
     if (this->size_ >= this->capacity_)  // array full
       this->Resize(this->capacity_ + (this->capacity_ >> 1) + 1);
     int i;
@@ -29,6 +31,8 @@ class OrderedArray : public Array<T> {
     this->size_++;
   }
 
+  // Returns the index of element if found,-1 otherwise. This method uses binary
+  // search and Runs in O(logn) time
   int Search(const T& element) const override {
     int low = 0, high = this->size_ - 1, mid;
     while (low <= high) {
@@ -39,6 +43,9 @@ class OrderedArray : public Array<T> {
     }
     return -1;
   }
+  // Finds the element index and deletes it if found.Returns true if
+  // deleted,false otherwise. This method uses binary search to find the element
+  // and then shifts the array left. Runs in O(n) time
   bool Remove(const T& element) override {
     int index = Search(element);
     if (index == -1) return false;
@@ -50,6 +57,8 @@ class OrderedArray : public Array<T> {
     return true;
   }
 
+  // Returns true if element is present in the array,false otherwise. Runs in
+  // O(logn) time
   bool Contains(const T& element) const override {
     return Search(element) != -1;
   }
