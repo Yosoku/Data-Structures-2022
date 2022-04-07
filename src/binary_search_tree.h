@@ -24,6 +24,8 @@ class BinarySearchTree {
   BinarySearchTree() {  // tree's constructor used to create an empty tree
     root_ = nullptr;
   }
+  // Returns true if the tree contains no elements
+  bool IsEmpty() { return root_ == nullptr; }
 
   void DeleteNode(
       Node<T>* pointer);  // assistant function used by the destructor
@@ -36,9 +38,7 @@ class BinarySearchTree {
       const std::string& word1,
       const std::string& word2);  // function to insert a new tuple of words
 
-  bool Search(const std::string& word1,
-              const std::string&
-                  word2);  // function to search for a specific tuple of words
+  bool Contains(const T& element);
 };
 
 #endif
