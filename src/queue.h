@@ -1,7 +1,5 @@
 #ifndef QUEUE_H
 #define QUEUE_H
-#include <cstdint>
-#include <new>
 
 #include "array.hpp"
 namespace ds {
