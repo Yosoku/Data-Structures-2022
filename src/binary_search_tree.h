@@ -25,7 +25,7 @@ class BinarySearchTree {
     root_ = nullptr;
   }
   // Returns true if the tree contains no elements
-  bool IsEmpty() { return root_ == nullptr; }
+  bool IsEmpty() const { return root_ == nullptr; }
 
   void DeleteNode(
       Node<T>* pointer);  // assistant function used by the destructor
