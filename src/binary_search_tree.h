@@ -38,7 +38,7 @@ class BinarySearchTree {
       const std::string& word1,
       const std::string& word2);  // function to insert a new tuple of words
 
-  bool Contains(const T& element);
+  bool Contains(const T& element) const;
 };
 
 #endif
