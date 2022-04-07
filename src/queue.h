@@ -22,6 +22,7 @@ class Queue : public ds::Array<T> {
   // Deletes the element in the front of the queue and shifts all elements left
   // Runs in O(n)
   void Pop() {
+    if (this->IsEmpty()) return;
     this->buffer_[0].~T();
     for (int i = 0; i < this->size_; ++i) {
       this->buffer_[i] = std::move(this->buffer_[i + 1]);
