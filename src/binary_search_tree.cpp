@@ -60,6 +60,8 @@ void BinarySearchTree::Insert(const std::string& word1, const std::string& word2
             if (pointer_->left == NULL) {
               Node *new_node = new Node(word1, word2);
               pointer_->left = new_node;
+              pointer_ = root_;
+              break;
             } else {
               pointer_ = pointer_->left;
             }
@@ -67,11 +69,15 @@ void BinarySearchTree::Insert(const std::string& word1, const std::string& word2
             if (pointer_->right == NULL) {
               Node *new_node = new Node(word1, word2);
               pointer_->right = new_node;
+              pointer_ = root_;
+              break;
             } else {
               pointer_ = pointer_->right;
             }
           } else {//if second words are equivalent too we increase the counter of the specific tuple of words by one
             pointer_->counter++;
+            pointer_ = root_;
+            break;
           }
         }
       }
